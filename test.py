@@ -1,4 +1,4 @@
-from model import Model
+from model import Model2
 import torch.nn.functional as F
 from dataLoader import test_set
 import torch
@@ -12,7 +12,7 @@ def test(model):
 
 if __name__ == "__main__":
     try:
-        model = Model(784, 10)
+        model = Model2(784, 1000, 10, F.relu)
         model.load_state_dict(torch.load('mnist_model'))
         test(model)
     except:
