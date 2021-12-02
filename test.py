@@ -13,7 +13,7 @@ def test(model):
 if __name__ == "__main__":
     try:
         model = Model2(784, 1000, 10, F.relu)
-        model.load_state_dict(torch.load('mnist_model'))
+        model.load_state_dict(torch.load('model2'))
         test(model)
     except:
         print("Train the model first")
