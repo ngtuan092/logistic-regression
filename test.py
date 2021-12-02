@@ -3,7 +3,7 @@ import torch.nn.functional as F
 from dataLoader import test_set
 import torch
 from torch.utils.data import DataLoader
-def main(model):
+def test(model):
     print(len(test_set))
     test_loader = DataLoader(test_set)
     result = [model.batch_eval(batch) for batch in test_loader]
@@ -14,7 +14,7 @@ if __name__ == "__main__":
     try:
         model = Model(784, 10)
         model.load_state_dict(torch.load('mnist_model'))
-        main(model)
+        test(model)
     except:
         print("Train the model first")
 
