@@ -2,10 +2,12 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from utils.eval import Accuracy
+
+
 class Model(nn.Module):
     def __init__(self, num_input, num_output):
         super().__init__()
-        self.num_input =  num_input
+        self.num_input = num_input
         self.num_output = num_output
         self.linear = nn.Linear(num_input, num_output)
 
@@ -35,14 +37,15 @@ class Model(nn.Module):
         epoch_acc = torch.stack(batch_accs).mean()      # Combine accuracies
         return {'val_loss': epoch_loss.item(), 'val_acc': epoch_acc.item()}
 
-        
+
 class Model2(nn.Module):
     """
     More complex model try to increase accuracy
     """
-    def __init__(self, num_input, num_output, num_hidden, activation_fn):
+
+    def __init__(self, num_input, num_hidden, num_output, activation_fn):
         super().__init__()
-        self.num_input =  num_input
+        self.num_input = num_input
         self.num_hidden = num_hidden
         self.num_output = num_output
         self.activation_fn = activation_fn
