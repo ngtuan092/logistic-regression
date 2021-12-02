@@ -11,11 +11,10 @@ def main(model):
     print(result)
 
 if __name__ == "__main__":
-    model = Model(784, 10)
-    model.load_state_dict(torch.load('mnist_model'))
-    main(model)
     try:
-        pass
+        model = Model(784, 10)
+        model.load_state_dict(torch.load('mnist_model'))
+        main(model)
     except:
         print("Train the model first")
 
