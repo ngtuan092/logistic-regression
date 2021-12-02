@@ -1,13 +1,13 @@
 from torch.serialization import save
 from dataLoader import train_loader, valid_loader
-from model import Model
+from model import Model2
 import matplotlib.pyplot as plt
 import torch
 NUM_INPUT = 784
 NUM_OUTPUT = 10
-
+import torch.nn.functional as F
 # init model
-model = Model(NUM_INPUT, NUM_OUTPUT)
+model = Model2(NUM_INPUT, 1000,  NUM_OUTPUT, F.relu)
 batch_results = [model.batch_eval(batch) for batch in valid_loader]
 result0 = model.eval(batch_results)
 
@@ -29,12 +29,12 @@ def fit(epochs, lr, model, train_loader, valid_loader, opt=torch.optim.SGD):
         history.append(result)
     return history
 
-def save_model(model):
-    torch.save(model.state_dict(), 'mnist_model')
+def save_model(model, model_name):
+    torch.save(model.state_dict(), model_name)
 
 if __name__ == '__main__':
-    history = fit(20, 0.001, model, train_loader, valid_loader)
-    # save_model(model)
+    history = fit(20, 0.03, model, train_loader, valid_loader)
+    save_model(model, 'model2')
     history = [result0] + history
     accuracies = [result['val_acc'] for result in history]
     plt.figure("Fig.1")

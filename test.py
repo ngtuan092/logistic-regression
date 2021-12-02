@@ -1,4 +1,5 @@
 from model import Model
+import torch.nn.functional as F
 from dataLoader import test_set
 import torch
 from torch.utils.data import DataLoader

@@ -1,6 +1,7 @@
+import torch
 from torch.utils import data
-from torchvision.datasets import MNIST
-from torch.utils.data import DataLoader, dataset, random_split
+from torchvision.datasets import FashionMNIST, MNIST
+from torch.utils.data import DataLoader, random_split
 from torchvision.transforms import ToTensor
 import matplotlib.pyplot as plt
 
